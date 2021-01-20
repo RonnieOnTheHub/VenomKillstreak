@@ -1,0 +1,12 @@
+{
+	"Name": "VenomKillstreak",
+	"Description": "Killstreak",
+	"Authors": [ "Ronnie"],
+	"Tags": [ "venomkillstreak" ],
+	"Version": "0.1.0",
+	"HasVeniceEXT": true,
+	"HasWebUI": false,
+	"Dependencies": {
+		"veniceext": "^1.0.0"
+	}
+}
