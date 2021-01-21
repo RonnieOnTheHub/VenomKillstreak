@@ -61,7 +61,7 @@ Events:Subscribe('Partition:Loaded', function(partition)
             print("patched ChassisComponentData of venom")
             local chassisComponentData = ChassisComponentData(instance)
             chassisComponentData:MakeWritable()
-            --chassisComponentData.alwaysFullThrottle = true
+            --chassisComponentData.alwaysFullThrottle = true --change
         end
 
         ----PropellerEngineConfigData
@@ -94,8 +94,8 @@ Events:Subscribe('Partition:Loaded', function(partition)
             local playerEntryComponentData = PlayerEntryComponentData(instance)
             playerEntryComponentData:MakeWritable()
             --playerEntryComponentData.entrySpottingSettings = 0
-            playerEntryComponentData.forbiddenForHuman = true
-            playerEntryComponentData.entryOrderNumber = 1
+            --playerEntryComponentData.forbiddenForHuman = true
+            --playerEntryComponentData.entryOrderNumber = 1     --change
             --components = playerEntryComponentData.components
             --inputCurves = playerEntryComponentData.inputCurves
             --playerEntryComponentData.components:clear()
@@ -105,7 +105,13 @@ Events:Subscribe('Partition:Loaded', function(partition)
             --        Vec3(0, 1, 0),
             --        Vec3(0, 0, 1),
             --        Vec3(0.391037047, -1.03854346, 2.8959167)
-            )
+            --)
+        end
+
+        if instance.instanceGuid == Guid("1D25A98F-26AB-4C86-9E5E-1EAF698A31FF") then
+            local worldPartReferenceObjectData = WorldPartReferenceObjectData(instance)
+            worldPartReferenceObjectData:MakeWritable()
+            worldPartReferenceObjectData.excluded = true
         end
 
 
@@ -114,7 +120,7 @@ Events:Subscribe('Partition:Loaded', function(partition)
             print("patched gunner PlayerEntryComponentData of venom")
             local playerEntryComponentData = PlayerEntryComponentData(instance)
             playerEntryComponentData:MakeWritable()
-            playerEntryComponentData.entryOrderNumber = 0
+            --playerEntryComponentData.entryOrderNumber = 0
             --playerEntryComponentData.entrySpottingSettings = 0
             --playerEntryComponentData.showSoldierGearInEntry = true
             --playerEntryComponentData.components:clear()
@@ -138,13 +144,14 @@ Events:Subscribe('Partition:Loaded', function(partition)
             vehicleConfigData:MakeWritable()
             vehicleConfigData.vehicleModeAtReset = 4
             vehicleConfigData.vehicleModeChangeStartingTime = 0.0
+            --vehicleConfigData.centerOfMassHandlingOffset = Vec3(0.01, 2, 0.05)
             --vehicleConfigData:ClearConstantForce()
             --vehicleConfigData.useGearbox = false
             local constantForceData = ConstantForceData()
-            constantForceData.value = Vec3(0,0,50000)
-            constantForceData.condition = 2
-            constantForceData.typeOfForce = 1
-            constantForceData.space = 0
+            constantForceData.value = Vec3(1,1,1)
+            --constantForceData.condition = 2
+            constantForceData.typeOfForce = 0
+            constantForceData.space = 1
             vehicleConfigData.constantForce:add(constantForceData)
         end
 
@@ -153,6 +160,13 @@ Events:Subscribe('Partition:Loaded', function(partition)
             print("patched VehicleEntityData of venom")
             local vehicleEntityData = VehicleEntityData(instance)
             vehicleEntityData:MakeWritable()
+        end
+
+        if instance.instanceGuid == Guid("D6996433-B669-447F-8B53-C93BFCD02659") then
+            print("patched driver SoundPatchAsset of venom")
+            local soundPatchAsset = SoundPatchAsset(instance)
+            soundPatchAsset:MakeWritable()
+            soundPatchAsset.isPersistent = true
         end
 
     end
