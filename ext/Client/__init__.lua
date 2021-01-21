@@ -126,7 +126,7 @@ if debug then
 				pointOfAim.mode = FiringMode.Disabled
 			end
 
-			if InputManager:WentKeyDown(InputDeviceKeys.IDK_F9) and pointOfAim.mode == FiringMode.Target then
+			if InputManager:WentKeyDown(InputDeviceKeys.IDK_F8) and pointOfAim.mode == FiringMode.Target then
 				if outOfBound then
 					return
 				end
