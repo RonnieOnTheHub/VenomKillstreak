@@ -2,7 +2,7 @@
 	"Name": "VenomKillstreak",
 	"Description": "Killstreak",
 	"Authors": [ "Ronnie"],
-	"Tags": [ "venomkillstreak" ],
+	"Tags": [ "killstreaks" ],
 	"Version": "0.1.0",
 	"HasVeniceEXT": true,
 	"HasWebUI": false,

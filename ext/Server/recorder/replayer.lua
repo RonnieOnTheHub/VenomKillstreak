@@ -327,8 +327,6 @@ function Replayer:_eventPlayerSetSquadLeader(event)
 end
 
 function Replayer:_eventVehicleSpawned(event)
-	print("spawn vehicle")
-	print(event)
 	local vehicleBp = ResourceManager:SearchForInstanceByGuid(Guid(event.bp))
 
 	if vehicleBp == nil then

@@ -4,13 +4,13 @@ Events:Subscribe("Player:UpdateInput", function()
 		print("Killstreak used")
 	end
 
-	if InputManager:WentKeyUp(InputDeviceKeys.IDK_F8) then
-		NetEvents:SendLocal("vu-ks-attackheli:save")
-		print("saved")
-	end
+	-- if InputManager:WentKeyUp(InputDeviceKeys.IDK_F8) then
+	-- 	NetEvents:SendLocal("vu-ks-attackheli:save")
+	-- 	print("saved")
+	-- end
 
-	if InputManager:WentKeyUp(InputDeviceKeys.IDK_F7) then
-		NetEvents:SendLocal("vu-ks-attackheli:record")
-		print("record")
-	end
+	-- if InputManager:WentKeyUp(InputDeviceKeys.IDK_F7) then
+	-- 	NetEvents:SendLocal("vu-ks-attackheli:record")
+	-- 	print("record")
+	-- end
 end)
