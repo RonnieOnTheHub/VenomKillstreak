@@ -13,9 +13,11 @@ start_player = nil
 
 NetEvents:Subscribe('vu-ks-venom:Launch', function(player)
 	if g_BattleReplayer ~= nil then
+		print("killstreak already going")
 		return
 	end
-	if SharedUtils:GetLevelName() ~= "XP2_Skybar" then
+	if SharedUtils:GetLevelName() ~= "Levels/XP2_Skybar/XP2_Skybar" then
+		print(SharedUtils:GetLevelName() .. "not the map")
 		return
 	end
 	venom_player = player
