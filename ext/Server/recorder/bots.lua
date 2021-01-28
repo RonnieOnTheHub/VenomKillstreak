@@ -31,6 +31,9 @@ end
 function Bots:createBot(name, team, squad)
 	-- Create a player for this bot.
 	local botPlayer = PlayerManager:CreatePlayer(name, team, squad)
+	if botPlayer == nil then
+		return nil
+	end
 
 	-- Create input for this bot.
 	local botInput = EntryInput()

@@ -172,6 +172,10 @@ end
 
 function Replayer:_eventPlayerCreated(event)
 	self._players[event.id] = Bots:createBot(event.name, event.team, event.squad)
+	if self._players[event.id] == nil then
+		self:stop()
+		return
+	end
 	self._playerIdToReplayId[self._players[event.id].id] = event.id
 
 	self._players[event.id].input.flags = EntryInputFlags.AuthoritativeAiming
@@ -428,6 +432,9 @@ function Replayer:stop()
 	-- Delete all players and vehicles
 	for _, player in pairs(self._players) do
 		Bots:destroyBot(player)
+	end
+	if self._passenger ~= nil then 
+		self._passenger:ExitVehicle(true, true)
 	end
 
 	for _, vehicle in pairs(self._vehicles) do

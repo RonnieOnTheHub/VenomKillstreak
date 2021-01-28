@@ -87,7 +87,7 @@ Events:Subscribe('Partition:Loaded', function(partition)
             print("patched VehicleEntityData of venom")
             local vehicleEntityData = VehicleEntityData(instance)
             vehicleEntityData:MakeWritable()
-            vehicleEntityData.exitAllowed = false --Leave this to false, until we fix that we stop the killstreak if he leaves the chopper.
+            vehicleEntityData.exitAllowed = true
         end
 
     end
