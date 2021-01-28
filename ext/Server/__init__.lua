@@ -42,7 +42,9 @@ Events:Subscribe('Player:Killed', function(player, inflictor, position, weapon, 
 	end
 	if player.id == venom_player.id then
 		venom_player:ExitVehicle(true, true)
-		g_BattleReplayer:stop()
+		if g_BattleReplayer ~= nil then
+			g_BattleReplayer:stop()
+		end
 		venom_player.soldier:ForceDead()
 
 		g_BattleReplayer = nil
