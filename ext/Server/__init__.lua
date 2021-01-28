@@ -19,13 +19,18 @@ NetEvents:Subscribe('vu-ks-venom:Launch', function(player)
 	g_BattleReplayer = Replayer(map_skybar, player, 2)
 
 	g_BattleReplayer._eventHandlers[EventType.RECORDING_ENDED] = function(event)
-		g_BattleReplayer = nil
-		venom_player = nil
 		if venom_player ~= nil then
 			venom_player:ExitVehicle(true, true)
+		end
+		if venom_player ~= nil and start_player ~= nil and venom_player.soldier ~= nil then 
 			venom_player.soldier:SetPosition(start_player.trans)
 		end
-		g_BattleReplayer:stop()
+		if g_BattleReplayer ~= nil then
+			g_BattleReplayer:stop()
+		end
+		g_BattleReplayer = nil
+		venom_player = nil
+		start_player = nil
 	end
 	g_BattleReplayer:play()
 end)
@@ -37,7 +42,9 @@ Events:Subscribe('Player:Killed', function(player, inflictor, position, weapon, 
 	end
 	if player.id == venom_player.id then
 		venom_player:ExitVehicle(true, true)
-		--g_BattleReplayer:stop()
+		g_BattleReplayer:stop()
+		venom_player.soldier:ForceDead()
+
 		g_BattleReplayer = nil
 		venom_player = nil
 	end
