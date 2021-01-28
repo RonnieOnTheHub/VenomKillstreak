@@ -10,8 +10,12 @@ g_BattleReplayer = nil
 venom_player = nil
 start_player = nil
 
+
 NetEvents:Subscribe('vu-ks-venom:Launch', function(player)
 	if g_BattleReplayer ~= nil then
+		return
+	end
+	if SharedUtils:GetLevelName() ~= "XP2_Skybar" then
 		return
 	end
 	venom_player = player
@@ -121,5 +125,15 @@ NetEvents:Subscribe('vu-ks-venom:Record', function(player)
 			break
 		end
 
+	end
+end)
+
+Events:Subscribe('Level:Loaded', function(levelName, gameMode)
+	if levelName == "XP2_Skybar" then
+		local res = RCON:SendCommand("vu.DesertingAllowed", {"true"})
+		print(levelName .. " vu.DesertingAllowed true")
+		print(res)
+	else
+		RCON:SendCommand("vu.DesertingAllowed", {"false"})
 	end
 end)
