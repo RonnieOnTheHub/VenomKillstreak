@@ -19,11 +19,12 @@ NetEvents:Subscribe('vu-ks-venom:Launch', function(player)
 	g_BattleReplayer = Replayer(map_skybar, player, 2)
 
 	g_BattleReplayer._eventHandlers[EventType.RECORDING_ENDED] = function(event)
-		if venom_player ~= nil then
-			venom_player:ExitVehicle(true, true)
+		local location = start_player
+		if player ~= nil then
+			player:ExitVehicle(true, true)
 		end
-		if venom_player ~= nil and start_player ~= nil and venom_player.soldier ~= nil then 
-			venom_player.soldier:SetPosition(start_player.trans)
+		if player ~= nil and location ~= nil and player.soldier ~= nil then
+			player.soldier:SetPosition(location.trans)
 		end
 		if g_BattleReplayer ~= nil then
 			g_BattleReplayer:stop()
@@ -64,7 +65,7 @@ Events:Subscribe('Vehicle:Exit', function(vehicle, player)
 	end
 end)
 
-NetEvents:Subscribe('vu-ks-venom:save', function(player)
+NetEvents:Subscribe('vu-ks-venom:Save', function(player)
 	if not g_BattleRecorder:stopRecording() then
 		return { 'NotRecording' }
 	end
@@ -78,7 +79,7 @@ NetEvents:Subscribe('vu-ks-venom:save', function(player)
 	print(serializeRecordingDataToBase64(recordingData))
 end)
 
-NetEvents:Subscribe('vu-ks-venom:record', function(player)
+NetEvents:Subscribe('vu-ks-venom:Record', function(player)
 	local result = g_BattleRecorder:startRecording()
 
 	if result == StartRecordingResult.STARTED then
