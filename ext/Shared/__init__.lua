@@ -17,12 +17,10 @@ Hooks:Install('ResourceManager:LoadBundles', 100, function(hook, bundles, compar
 
         if SharedUtils:GetLevelName() ~= 'Levels/MP_012/MP_012' then
             table.insert(bundles, 'Levels/MP_012/MP_012')
+            print("inserting Levels/MP_012/MP_012 into " .. tostring(bundles) )
         end
+
         table.insert(bundles, 'Levels/MP_012/Conquest_Large')
-
-        -- print("printing all bundles:")
-        -- print(bundles)
-
         hook:Pass(bundles, compartment)
     end
 end)
@@ -36,16 +34,21 @@ end)
 local components = nil
 local inputCurves = nil
 
+
+
 Events:Subscribe('Partition:Loaded', function(partition)
-    --print(partition.name)
+    if SharedUtils:GetLevelName() ~= "Levels/XP2_Skybar/XP2_Skybar" then
+        return
+    end
+
     for _, instance in pairs(partition.instances) do
         --alwaysFullThrottle
-        if instance.instanceGuid == Guid("6c62b15d-848d-bdf3-bd66-218ad0554c14") then
-            -- print("patched ChassisComponentData of venom")
-            local chassisComponentData = ChassisComponentData(instance)
-            chassisComponentData:MakeWritable()
-            --chassisComponentData.alwaysFullThrottle = true --change
-        end
+        -- if instance.instanceGuid == Guid("6c62b15d-848d-bdf3-bd66-218ad0554c14") then
+        --     -- print("patched ChassisComponentData of venom")
+        --     local chassisComponentData = ChassisComponentData(instance)
+        --     chassisComponentData:MakeWritable()
+        --     --chassisComponentData.alwaysFullThrottle = true --change
+        -- end
         
         --driver
         -- if instance.instanceGuid == Guid("98a7b028-ec93-4a59-a8f6-81b3ef119fce") then
@@ -60,6 +63,7 @@ Events:Subscribe('Partition:Loaded', function(partition)
         --invisible walls on ziba
         if instance.instanceGuid == Guid("1D25A98F-26AB-4C86-9E5E-1EAF698A31FF") then
             local worldPartReferenceObjectData = WorldPartReferenceObjectData(instance)
+            print("Partition Loaded: removed invisible walls on ziba")
             worldPartReferenceObjectData:MakeWritable()
             worldPartReferenceObjectData.excluded = true
         end
@@ -75,7 +79,7 @@ Events:Subscribe('Partition:Loaded', function(partition)
 
         --venom config data
         if instance.instanceGuid == Guid("18bffc1c-4326-43d1-a326-19c590613b58") then
-            print("patched VehicleConfigData of venom")
+            print("Partition Loaded: patched VehicleConfigData of venom")
             local vehicleConfigData = VehicleConfigData(instance)
             vehicleConfigData:MakeWritable()
             vehicleConfigData.vehicleModeAtReset = 4
@@ -84,7 +88,7 @@ Events:Subscribe('Partition:Loaded', function(partition)
 
         --venom entity data
         if instance.instanceGuid == Guid("88f274dd-7c84-1ee5-6ee7-dd1d980148b3") then
-            print("patched VehicleEntityData of venom")
+            print("Partition Loaded: patched VehicleEntityData of venom")
             local vehicleEntityData = VehicleEntityData(instance)
             vehicleEntityData:MakeWritable()
             vehicleEntityData.exitAllowed = true
