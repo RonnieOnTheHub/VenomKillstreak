@@ -139,7 +139,7 @@ NetEvents:Subscribe('vu-ks-venom:Record', function(player)
 end)
 
 Events:Subscribe('Level:Loaded', function(levelName, gameMode)
-	if levelName == "XP2_Skybar" then
+	if levelName == "XP2_Skybar" or levelName == "XP2_Factory" then
 		local res = RCON:SendCommand("vu.DesertingAllowed", {"true"})
 		print(levelName .. " vu.DesertingAllowed true")
 		print(res)

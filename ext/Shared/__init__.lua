@@ -89,12 +89,73 @@ ResourceManager:RegisterInstanceLoadHandler(Guid('2DF41167-0BAB-11E1-AA4E-EFBA5D
 end)
 
 -- xp2_factory walls
-ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('2EEA317D-E515-4C97-918C-47BB467C1111'), function(instance)
-    local WorldPartData = WorldPartData(instance)
-    print("Partition Loaded: removed invisible walls on scrapmetal")
-    WorldPartData:MakeWritable()
-    WorldPartData.enabled = false
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('18368EFD-FD6D-4901-8038-F867836F0A83'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible1 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
 end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('6EAB5B8C-21A4-4165-AC47-779C850D86DE'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible2 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('6EC86941-BFEE-404B-9171-333BCE1139CA'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible3 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('FA5B12DF-FDBC-4285-A534-575053825A9B'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible4 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('98B4C686-AFA4-44E8-BAB4-4E87B4F35297'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible5 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('6DE1E7DE-5A5D-4D2E-B897-F58ADAFD5DC8'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible6 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('99EE1CB1-54A9-4A0F-947C-CFB09E13E833'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible7 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('3834705D-AACB-4611-9E67-F7A3419A5DED'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible8 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('E8AB2428-205A-44BE-9782-A104C711D0A7'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible9 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('7349B59B-73C0-4E03-AF5E-8E9620DC5678'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible10 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+ResourceManager:RegisterInstanceLoadHandler(Guid('A0EFD05D-D405-44FC-B568-042B36F85556'), Guid('7A4D21AF-F1ED-436B-82FC-05DD32C52255'), function(instance)
+    local referenceObjectData = ReferenceObjectData(instance)
+    print("Partition Loaded: removed invisible11 walls on scrapmetal")
+    referenceObjectData:MakeWritable()
+    referenceObjectData.excluded = true
+end)
+
 
 --venom config data
 ResourceManager:RegisterInstanceLoadHandler(Guid('97945D87-011D-11E0-B97C-FC495C335A52'), Guid('18bffc1c-4326-43d1-a326-19c590613b58'), function(instance)
