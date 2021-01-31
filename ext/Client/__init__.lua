@@ -1,5 +1,5 @@
 -- Only enable while developing
-local debug = true
+local debug = false
 
 Events:Subscribe(
 	"vu-ks-venom:Invoke",
