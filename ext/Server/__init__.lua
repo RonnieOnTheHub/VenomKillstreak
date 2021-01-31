@@ -3,7 +3,7 @@ require('recorder/recorder')
 require('recorder/replayer')
 require('recorder/serialization')
 require('recorder/api')
-require('XP2_Skybar')
+require('Maps')
 
 g_BattleRecorder = Recorder()
 g_BattleReplayer = nil
@@ -11,30 +11,40 @@ venom_player = nil
 start_player = nil
 
 
+
 NetEvents:Subscribe('vu-ks-venom:Launch', function(player)
 	if g_BattleReplayer ~= nil then
 		print("killstreak already going")
 		return
 	end
-	if SharedUtils:GetLevelName() ~= "Levels/XP2_Skybar/XP2_Skybar" then
-		print(SharedUtils:GetLevelName() .. "not the map")
-		return
-	end
+
 	venom_player = player
 	start_player = player.soldier.worldTransform:Clone()
-	g_BattleReplayer = Replayer(map_skybar, player, 2)
+
+	local levelName = SharedUtils:GetLevelName()
+	if mapData[levelName] == nil then
+		print("levelName is nil")
+		return
+	end
+	print("MAPDATA: printing mapdata")
+	print(levelName)
+	print(mapData[levelName])
+	g_BattleReplayer = Replayer(mapData[levelName], player, 2)
 
 	g_BattleReplayer._eventHandlers[EventType.RECORDING_ENDED] = function(event)
 		local location = start_player
 		if player ~= nil then
 			player:ExitVehicle(true, true)
 		end
+
 		if player ~= nil and location ~= nil and player.soldier ~= nil then
 			player.soldier:SetPosition(location.trans)
 		end
+
 		if g_BattleReplayer ~= nil then
 			g_BattleReplayer:stop()
 		end
+		
 		g_BattleReplayer = nil
 		venom_player = nil
 		start_player = nil
@@ -98,11 +108,9 @@ NetEvents:Subscribe('vu-ks-venom:Record', function(player)
 		return
 	end
 
-	local position = Vec3(-23.328125, 25.327930, 98.891602)
 
 	local yaw = player.input.authoritativeAimingYaw
 	local launchTransform = player.soldier.worldTransform:Clone()
-	launchTransform.trans = position
 	local params = EntityCreationParams()
 	params.transform = launchTransform
 	params.networked = true
