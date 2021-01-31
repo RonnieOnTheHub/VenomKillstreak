@@ -10,8 +10,8 @@ mapConfigurations = {
     },
     -- damavand
     ["Levels/MP_013/MP_013"] = {
-        ["subworldData"] = "Levels/MP_013/ConquestLarge",
-        ["bundles"] = {"Levels/MP_013/ConquestLarge"}
+        ["subworldData"] = "Levels/MP_013/Rush",
+        ["bundles"] = {"Levels/MP_013/Rush"}
     },
     --caspian
     -- ["Levels/MP_007/MP_007"] = {
